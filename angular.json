@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:build",
           "options": {
             "outputPath": "dist/MFE-POC-HOMEPAGE",
             "index": "src/index.html",
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "MFE-POC-HOMEPAGE"
+    }
+  },
+  "defaultProject": "MFE-POC-HOMEPAGE",
+  "cli": {
+    "analytics": false
+  }
 }
