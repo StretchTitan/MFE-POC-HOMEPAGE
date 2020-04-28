@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +6,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'MFE-POC-HOMEPAGE';
+  @Input() state;
+  @Output() msg = new EventEmitter<any>();
 
-  constructor(private router: Router) {
-    router.initialNavigation();
-    // Manually triggering initial navigation
+  clearName() {
+    this.msg.emit({ action: 'clearName' });
   }
 }
