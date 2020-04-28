@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "live-server dist/MFE-POC-HOMEPAGE --port=4201",
-    "build": "ng build --single-bundle true --output-hashing none",
+    "build": "ng build --single-bundle true --output-hashing none --watch true",
+    "build:prod": "ng build --prod --single-bundle true --output-hashing none --vendor-chunk false --watch true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
