@@ -4,11 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "live-server dist/MFE-POC-HOMEPAGE --port=4201",
-    "build": "ng build --single-bundle true --output-hashing none --watch true",
-    "build:prod": "ng build --prod --single-bundle true --output-hashing none --vendor-chunk false --watch true",
+    "start:solo": "ng serve --extra-webpack-config webpack.externals.js",
+    "build": "ng build --extra-webpack-config webpack.externals.js --single-bundle --watch true",
+    "build:prod": "ng build --extra-webpack-config webpack.externals.js  --single-bundle --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall:bak": "",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
