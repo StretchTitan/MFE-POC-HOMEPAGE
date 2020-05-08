@@ -1,6 +1,11 @@
 <div class="homepage-app">
     <h4>This is the <span style="color: darkgreen">MFE-POC-HOMEPAGE</span> app</h4>
     <p>Welcome to the home page!</p>
-    <p *ngIf="state && state.firstName">Name: {{state.firstName}} {{state.lastName}}</p>
+    <p *ngIf="nameState && nameState.firstName">Name: {{nameState.firstName}} {{nameState.lastName}}</p>
     <button (click)="clearName()">Clear Name</button>
-</div> 
+</div>
+<div class="nav">
+    <a class="nav--link" routerLink="/home/test">Test</a>
+    <a class="nav--link" routerLink="/home/banana">Banana</a>
+</div>
+<router-outlet></router-outlet>
