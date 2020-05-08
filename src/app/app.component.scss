@@ -1,6 +1,25 @@
 :host {
     display: flex;
+    flex-direction: column;
     flex: 1;
+}
+
+.nav {
+    height: 40px;
+    width: 100%;
+    background: lightslategray;
+    display: flex;
+    justify-content: center;
+
+    &--link {
+        height: 100%;
+        display: flex;
+        padding: 0 20px;
+        margin: 0 10px;
+        color: white;
+        align-items: center;
+        text-decoration: none;
+    }
 }
 
 .homepage-app {
