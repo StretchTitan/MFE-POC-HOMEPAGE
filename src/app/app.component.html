@@ -3,6 +3,7 @@
     <p>Welcome to the home page!</p>
     <p *ngIf="nameState && nameState.firstName">Name: {{nameState.firstName}} {{nameState.lastName}}</p>
     <button (click)="clearName()">Clear Name</button>
+    <mfe-poc-homepage-widget></mfe-poc-homepage-widget>
 </div>
 <div class="nav">
     <a class="nav--link" routerLink="/home/test">Test</a>
