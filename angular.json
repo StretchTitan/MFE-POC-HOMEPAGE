@@ -67,6 +67,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "MFE-POC-HOMEPAGE:build",
+            "host": "local.spectrum-poc.net",
             "port": 4201
           },
           "configurations": {
