@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { createCustomElement } from '@angular/elements';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +18,8 @@ import { WidgetModule } from './widget/widget.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    WidgetModule
+    WidgetModule,
+    HttpClientModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
