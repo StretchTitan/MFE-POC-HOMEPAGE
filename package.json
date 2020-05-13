@@ -6,7 +6,7 @@
     "start": "live-server dist/MFE-POC-HOMEPAGE --port=4201",
     "start:solo": "ng serve --extra-webpack-config webpack.externals.js",
     "build": "ng build --extra-webpack-config webpack.externals.js --single-bundle --watch true",
-    "build:prod": "ng build --extra-webpack-config webpack.externals.js  --single-bundle --prod",
+    "build:prod": "ng build --extra-webpack-config webpack.externals.js  --single-bundle --prod --watch true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

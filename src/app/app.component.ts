@@ -13,9 +13,7 @@ export class AppComponent implements OnChanges {
   @Output() msg = new EventEmitter<any>();
   display: any;
 
-  constructor( private readonly http: HttpClient ) {}
-
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.routerState && changes.routerState.currentValue.startsWith('/home')) {
