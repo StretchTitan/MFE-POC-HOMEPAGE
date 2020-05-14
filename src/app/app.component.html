@@ -1,9 +1,9 @@
 <div class="homepage-app">
     <h4>This is the <span style="color: darkgreen">MFE-POC-HOMEPAGE</span> app</h4>
     <p>Welcome to the home page!</p>
-    <p *ngIf="nameState && nameState.firstName">Name: {{nameState.firstName}} {{nameState.lastName}}</p>
+    <p *ngIf="(nameState$ | push) as n">Name: {{n.firstName}} {{n.lastName}}</p>
     <button (click)="clearName()">Clear Name</button>
-    <mfe-poc-homepage-widget></mfe-poc-homepage-widget>
+    <mfe-poc-homepage-widget [counter$]="counter$"></mfe-poc-homepage-widget>
     <hr/>
     <button (click)="getToken()">Get Token</button> <button (click)="getApi()">Make API Call</button> <button *ngIf="display" (click)="clearResult()">Clear Result</button>
     <div *ngIf="display">
@@ -12,7 +12,7 @@
     </div>
 </div> 
 <div class="nav">
-    <a class="nav--link" routerLink="/home/test">Test</a>
-    <a class="nav--link" routerLink="/home/banana">Banana</a>
+    <a class="nav--link" routerLink="/home/equipment">Equipment</a>
+    <a class="nav--link" routerLink="/home/channels">Channels</a>
 </div>
 <router-outlet></router-outlet>

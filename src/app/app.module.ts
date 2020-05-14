@@ -5,15 +5,17 @@ import { createCustomElement } from '@angular/elements';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestComponent } from './test/test.component';
-import { BananaComponent } from './banana/banana.component';
+import { EquipmentComponent } from './equipment/equipment.component';
+import { ChannelsComponent } from './channels/channels.component';
 import { WidgetModule } from './widget/widget.module';
+import { PushPipe } from './push.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
-    BananaComponent
+    EquipmentComponent,
+    ChannelsComponent,
+    PushPipe
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,9 @@ import { WidgetModule } from './widget/widget.module';
     HttpClientModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [
+    PushPipe
+  ],
   // Uncomment this line and run ng serve to only run this app locally
   // bootstrap: [AppComponent],
   entryComponents: [AppComponent],
@@ -30,7 +34,7 @@ import { WidgetModule } from './widget/widget.module';
 
 export class AppModule {
   constructor(private injector: Injector) {
-    const appElement = createCustomElement(AppComponent, { injector: this.injector});
+    const appElement = createCustomElement(AppComponent, { injector: this.injector });
     customElements.define('mfe-poc-homepage', appElement);
   }
 

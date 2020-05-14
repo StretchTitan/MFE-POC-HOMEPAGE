@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TestComponent } from './test/test.component';
-import { BananaComponent } from './banana/banana.component';
+import { EquipmentComponent } from './equipment/equipment.component';
+import { ChannelsComponent } from './channels/channels.component';
 
 
 const routes: Routes = [{
   path: 'home',
   children: [{
-    path: 'test',
-    component: TestComponent
+    path: 'equipment',
+    component: EquipmentComponent
   }, {
-    path: 'banana',
-    component: BananaComponent
+    path: 'channels',
+    component: ChannelsComponent
   }],
 }];
 
