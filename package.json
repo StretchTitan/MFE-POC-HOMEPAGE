@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "live-server dist/MFE-POC-HOMEPAGE --port=4201",
+    "start": "live-server dist/MFE-POC-HOMEPAGE --port=4201 --cors",
     "start:solo": "ng serve --extra-webpack-config webpack.externals.js",
     "build": "ng build --extra-webpack-config webpack.externals.js --single-bundle --watch true",
     "build:prod": "ng build --extra-webpack-config webpack.externals.js  --single-bundle --prod --watch true",
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.3",
+    "@angular-extensions/elements": "^9.2.0",
     "@angular/cli": "~9.1.3",
     "@angular/compiler-cli": "~9.1.3",
     "@angular/elements": "^9.1.3",

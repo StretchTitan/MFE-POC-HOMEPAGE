@@ -39,11 +39,20 @@
                 "bundleName": "polyfill-webcomp",
                 "input": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce-pf.js"
               },
-              "node_modules/rxjs/bundles/rxjs.umd.js",
-              "node_modules/@angular/core/bundles/core.umd.js",
+              {
+                "bundleName": "rxjs",
+                "input":"node_modules/rxjs/bundles/rxjs.umd.js"
+              },
+              {
+                "bundleName": "angular-core",
+                "input": "node_modules/@angular/core/bundles/core.umd.js"
+              },
+              {
+                "bundleName": "angular-compiler",
+                "input": "node_modules/@angular/compiler/bundles/compiler.umd.js"
+              },
               "node_modules/@angular/common/bundles/common.umd.js",
               "node_modules/@angular/common/bundles/common-http.umd.js",
-              "node_modules/@angular/compiler/bundles/compiler.umd.js",
               "node_modules/@angular/elements/bundles/elements.umd.js",
               "node_modules/@angular/forms/bundles/forms.umd.js",
               "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",

@@ -2,30 +2,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { createCustomElement } from '@angular/elements';
+import { LazyElementsModule, LAZY_ELEMENTS_REGISTRY } from '@angular-extensions/elements';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { ChannelsComponent } from './channels/channels.component';
-import { WidgetModule } from './widget/widget.module';
 import { PushPipe } from './push.pipe';
+import { CustomLazyRegistry } from './custom-lazy-registry';
 
 @NgModule({
   declarations: [
     AppComponent,
     EquipmentComponent,
     ChannelsComponent,
-    PushPipe
+    PushPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    WidgetModule,
     HttpClientModule,
+    LazyElementsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
-    PushPipe
+    PushPipe,
+    {
+      provide: LAZY_ELEMENTS_REGISTRY,
+      useClass: CustomLazyRegistry
+    }
   ],
   // Uncomment this line and run ng serve to only run this app locally
   // bootstrap: [AppComponent],
