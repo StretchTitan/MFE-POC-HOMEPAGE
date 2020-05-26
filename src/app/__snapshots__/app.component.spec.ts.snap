@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppComponent should create the app 1`] = `
+<app-root
+  __ngContext__={[Function LRootView]}
+  count={[Function Number]}
+  counter$={[Function Observable]}
+  destroySubs$={[Function Subject]}
+  http={[Function HttpClient]}
+  msg={[Function EventEmitter]}
+  router={[Function Router]}
+>
+  <div
+    class="homepage-app"
+  >
+    <h4>
+      This is the 
+      <span
+        style="color: darkgreen;"
+      >
+        MFE-POC-HOMEPAGE
+      </span>
+       app
+    </h4>
+    <p>
+      Welcome to the home page!
+    </p>
+    
+    <button>
+      Clear Name
+    </button>
+    
+    
+    <mfe-widget />
+    
+    <mfe-card />
+    
+    <hr />
+    <button>
+      Get Token
+    </button>
+    <button>
+      Make API Call
+    </button>
+    
+    
+  </div><div
+    class="nav"
+  >
+    <a
+      class="nav--link"
+      href="/home/equipment"
+      routerlink="/home/equipment"
+    >
+      Equipment
+    </a>
+    <a
+      class="nav--link"
+      href="/home/channels"
+      routerlink="/home/channels"
+    >
+      Channels
+    </a>
+  </div><router-outlet />
+</app-root>
+`;
