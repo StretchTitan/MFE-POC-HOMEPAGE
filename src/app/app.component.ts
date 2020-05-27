@@ -1,19 +1,19 @@
-import { Component, Input, Output, EventEmitter, SimpleChanges, OnChanges, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, SimpleChanges, OnChanges, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { interval, Observable, Subject } from 'rxjs';
-import { filter, map, take, takeUntil } from 'rxjs/operators';
+import { Router, Event, RouterOutlet, ActivationStart, NavigationStart, NavigationEnd } from '@angular/router';
+import { interval, Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnChanges, OnDestroy {
+export class AppComponent implements OnChanges {
   @Input() nameState$: Observable<{}>;
-  @Input() routerState$: Observable<string>;
+  @Input() routerState: string;
   @Output() msg = new EventEmitter<any>();
-  destroySubs$ = new Subject();
+  @ViewChild(RouterOutlet) outlet: RouterOutlet;
   display: any;
   count = 1;
   counter$ = interval(1000).pipe(take(6), map(() => this.count++));
@@ -21,17 +21,9 @@ export class AppComponent implements OnChanges, OnDestroy {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.routerState$ && changes.routerState$.firstChange) {
-      this.routerState$.pipe(
-        takeUntil(this.destroySubs$),
-        filter((route: string) => route.startsWith('/home'))
-      ).subscribe(route => this.router.navigate([route]));
+    if (changes.routerState && changes.routerState.firstChange) {
+      this.router.navigate([changes.routerState.currentValue]);
     }
-  }
-
-  ngOnDestroy(): void {
-    this.destroySubs$.next();
-    this.destroySubs$.complete();
   }
 
   clearName() {

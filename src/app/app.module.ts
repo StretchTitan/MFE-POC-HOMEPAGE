@@ -10,6 +10,7 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import { ChannelsComponent } from './channels/channels.component';
 import { PushPipe } from './push.pipe';
 import { CustomLazyRegistry } from './custom-lazy-registry';
+import { EmptyComponent } from './empty/empty.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CustomLazyRegistry } from './custom-lazy-registry';
     EquipmentComponent,
     ChannelsComponent,
     PushPipe,
+    EmptyComponent,
   ],
   imports: [
     BrowserModule,
