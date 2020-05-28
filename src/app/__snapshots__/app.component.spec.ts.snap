@@ -8,7 +8,11 @@ exports[`AppComponent should create the app 1`] = `
   destroySubs$={[Function Subject]}
   http={[Function HttpClient]}
   msg={[Function EventEmitter]}
+  outlet={[Function RouterOutlet]}
   router={[Function Router]}
+  store={[Function MockStore]}
+  storeNameState$={[Function Store]}
+  toggleState$={[Function Store]}
 >
   <div
     class="homepage-app"
@@ -26,6 +30,10 @@ exports[`AppComponent should create the app 1`] = `
       Welcome to the home page!
     </p>
     
+    <p>
+      Store Name:  
+    </p>
+    
     <button>
       Clear Name
     </button>
@@ -35,6 +43,12 @@ exports[`AppComponent should create the app 1`] = `
     
     <mfe-card />
     
+    <button>
+      Flip Toggle
+    </button>
+    <p>
+      Toggle: OFF
+    </p>
     <hr />
     <button>
       Get Token

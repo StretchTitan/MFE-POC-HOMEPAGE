@@ -10,19 +10,34 @@ import { AppComponent } from './app.component';
 import { PushPipe } from './push.pipe';
 import { CUSTOM_ELEMENTS_SCHEMA, SimpleChange } from '@angular/core';
 import { Router } from '@angular/router';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let router: Router;
   let httpTestingController: HttpTestingController;
+  const initialState = {
+    wrapper: {
+      name: {
+        firstName: '',
+        lastName: ''
+      }
+    },
+    toggle: {
+      toggle: false
+    }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [RouterTestingModule, HttpClientTestingModule],
       declarations: [AppComponent, PushPipe, LazyElementTestingDirective],
-      providers: [PushPipe],
+      providers: [
+        provideMockStore({ initialState }),
+        PushPipe
+      ],
     }).compileComponents();
 
     router = TestBed.inject(Router);
@@ -43,9 +58,9 @@ describe('AppComponent', () => {
     'ngOnChanges sets up routerState$ listener',
     marbles((m) => {
       spyOn(router, 'navigate');
-      component.routerState$ = m.hot('--a--', { a: '/home/settings' });
+      component.routerState = '/home/settings';
       component.ngOnChanges({
-        routerState$: new SimpleChange(null, component.routerState$, true),
+        routerState: new SimpleChange(null, component.routerState, true),
       });
       m.flush();
       fixture.detectChanges();
