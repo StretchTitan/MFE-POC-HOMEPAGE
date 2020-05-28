@@ -46,9 +46,13 @@ exports[`AppComponent should create the app 1`] = `
     <button>
       Flip Toggle
     </button>
-    <p>
+    <p
+      style="font-weight: bold; color: red;"
+    >
       Toggle: OFF
     </p>
+    <mfe-homepage-widget />
+    
     <hr />
     <button>
       Get Token
