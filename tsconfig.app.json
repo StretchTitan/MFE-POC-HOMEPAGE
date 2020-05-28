@@ -6,6 +6,7 @@
   },
   "files": [
     "src/main.ts",
+    "src/components/homepage-widget/compile.ts",
     "src/polyfills.ts"
   ],
   "include": [

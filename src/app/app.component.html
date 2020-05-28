@@ -10,6 +10,7 @@
     <mfe-card *axLazyElement="'http://local.spectrum-poc.net:4203/shared-card.js'; loadingTemplate: loading; errorTemplate: error"></mfe-card>
     <button (click)="flipToggle()">Flip Toggle</button>
     <p>Toggle: {{ (toggleState$ | async) ? 'ON' : 'OFF' }}</p>
+    <mfe-homepage-widget *axLazyElement="'http://local.spectrum-poc.net:4204/shared-homepage-widget.js'; loadingTemplate: loading; errorTemplate: error"></mfe-homepage-widget>
     <hr/>
     <button (click)="getToken()">Get Token</button> <button (click)="getApi()">Make API Call</button> <button *ngIf="display" (click)="clearResult()">Clear Result</button>
     <div *ngIf="display">

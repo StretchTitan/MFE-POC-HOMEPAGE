@@ -4,9 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "live-server dist/MFE-POC-HOMEPAGE --port=4201 --cors",
+    "start:comp": "live-server dist/components --port=4204 --cors",
     "start:solo": "ng serve --extra-webpack-config webpack.externals.js",
     "build": "ng build --extra-webpack-config webpack.externals.js --single-bundle --watch true",
     "build:prod": "ng build --extra-webpack-config webpack.externals.js  --single-bundle --prod --watch true",
+    "build-comps": "node build-comps",
+    "build-comps:prod": "node build-comps prod",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "ng lint",
