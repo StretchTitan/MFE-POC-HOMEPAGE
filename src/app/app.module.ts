@@ -11,8 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { ChannelsComponent } from './channels/channels.component';
-import { PushPipe } from './push.pipe';
-import { CustomLazyRegistry } from './custom-lazy-registry';
+import { PushPipeModule, CustomLazyRegistry } from 'mfe-services-pipes';
 import { EmptyComponent } from './empty/empty.component';
 import { reducers, metaReducers } from './store/reducers';
 
@@ -21,7 +20,6 @@ import { reducers, metaReducers } from './store/reducers';
     AppComponent,
     EquipmentComponent,
     ChannelsComponent,
-    PushPipe,
     EmptyComponent,
   ],
   imports: [
@@ -36,11 +34,11 @@ import { reducers, metaReducers } from './store/reducers';
         strictActionImmutability: true,
       }
     }),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    PushPipeModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
-    PushPipe,
     {
       provide: LAZY_ELEMENTS_REGISTRY,
       useClass: CustomLazyRegistry
