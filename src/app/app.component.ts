@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter, SimpleChanges, OnChanges, ViewChild, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router, RouterOutlet } from '@angular/router';
 import { interval, Observable, Subject } from 'rxjs';
 import { map, take, takeUntil } from 'rxjs/operators';
@@ -9,6 +8,7 @@ import { selectToggle } from './store/selectors/toggle/toggle.selectors';
 import { toggle } from './store/actions/toggle/toggle.actions';
 import { hydrateWrapper } from './store/actions/wrapper/wrapper.actions';
 import { selectWrapperNameState } from './store/selectors/wrapper/wrapper.selectors';
+import { TokenService } from 'mfe-services-pipes';
 
 @Component({
   selector: 'app-root',
@@ -25,11 +25,13 @@ export class AppComponent implements OnChanges, OnDestroy {
   storeNameState$: Observable<{ firstName: string, lastName: string }>;
   display: any;
   count = 1;
+  display$: Observable<any>;
   counter$ = interval(1000).pipe(take(6), map(() => this.count++));
 
-  constructor(private http: HttpClient, private router: Router, private store: Store) {
+  constructor(private tokenService: TokenService, private router: Router, private store: Store) {
     this.toggleState$ = store.select(selectToggle);
     this.storeNameState$ = store.select(selectWrapperNameState);
+    this.display$ = this.tokenService.display;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -58,22 +60,14 @@ export class AppComponent implements OnChanges, OnDestroy {
   }
 
   getToken() {
-    this.http.get('http://local.spectrum-poc.net:4299/token', { withCredentials: true })
-      .subscribe(
-        data => this.display = data,
-        error => this.display = `${error.message}`,
-      );
+    this.tokenService.getToken();
   }
 
   getApi() {
-    this.http.get('http://local.spectrum-poc.net:4299/api', { withCredentials: true })
-      .subscribe(
-        data => this.display = data,
-        error => this.display = `${error.message}`,
-      );
+    this.tokenService.getApi();
   }
 
   clearResult() {
-    this.display = '';
+    this.tokenService.clearResult();
   }
 }
