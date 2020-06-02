@@ -11,6 +11,8 @@
     <button (click)="flipToggle()">Flip Toggle Bang</button>
     <p style="font-weight: bold;" [ngStyle]="{'color': (toggleState$ | async) ? 'darkgreen' : 'red'}">Toggle: {{ (toggleState$ | async) ? 'ON' : 'OFF' }}</p>
     <mfe-homepage-widget *axLazyElement="'http://local.spectrum-poc.net:4204/shared-homepage-widget.js'; loadingTemplate: loading; errorTemplate: error"></mfe-homepage-widget>
+    <button class="alert-button" (click)="showAlert()">Show Alert</button>
+    <button class="panel-button" (click)="showPanel()">Show Panel</button>
     <hr/>
     <button (click)="getToken()">Get Token</button> <button (click)="getApi()">Make API Call</button> <button *ngIf="(display$ | async)" (click)="clearResult()">Clear Result</button>
     <div *ngIf="(display$ | async) as d">
