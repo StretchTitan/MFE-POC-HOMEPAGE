@@ -27,6 +27,7 @@ export class AppComponent implements OnChanges, OnDestroy {
   count = 1;
   display$: Observable<any>;
   counter$ = interval(1000).pipe(take(6), map(() => this.count++));
+  showInternalAlert = false;
 
   constructor(private tokenService: TokenService, private router: Router, private store: Store) {
     this.toggleState$ = store.select(selectToggle);
@@ -72,6 +73,10 @@ export class AppComponent implements OnChanges, OnDestroy {
         components: ['widget', 'card']
       }
     });
+  }
+
+  toggleInternalAlert() {
+    this.showInternalAlert = !this.showInternalAlert;
   }
 
   getToken() {
