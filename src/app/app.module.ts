@@ -14,6 +14,7 @@ import { ChannelsComponent } from './channels/channels.component';
 import { PushPipeModule, CustomLazyRegistry } from 'mfe-services-pipes';
 import { EmptyComponent } from './empty/empty.component';
 import { reducers, metaReducers } from './store/reducers';
+import { HomepageAlertComponent } from './homepage-alert/homepage-alert.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { reducers, metaReducers } from './store/reducers';
     EquipmentComponent,
     ChannelsComponent,
     EmptyComponent,
+    HomepageAlertComponent,
   ],
   imports: [
     BrowserModule,

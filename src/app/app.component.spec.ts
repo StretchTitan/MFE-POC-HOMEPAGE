@@ -1,22 +1,35 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
 import { LazyElementTestingDirective } from '@angular-extensions/elements/testing';
 import { marbles } from 'rxjs-marbles/jest';
 import { AppComponent } from './app.component';
-import { PushPipe } from './push.pipe';
-import { CUSTOM_ELEMENTS_SCHEMA, SimpleChange } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, SimpleChange, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { provideMockStore } from '@ngrx/store/testing';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { Pipe, PipeTransform } from '@angular/core';
+import { TokenService } from 'mfe-services-pipes';
+
+@Pipe({name: 'push'})
+class MockPipe implements PipeTransform {
+    transform(value: any): any {
+        return value;
+    }
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class MockTokenService {
+  getToken() {}
+  getApi() {}
+  clearResult() {}
+}
 
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let router: Router;
-  let httpTestingController: HttpTestingController;
+  let mockTokenService: MockTokenService;
   const initialState = {
     wrapper: {
       name: {
@@ -32,16 +45,13 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [RouterTestingModule, HttpClientTestingModule],
-      declarations: [AppComponent, PushPipe, LazyElementTestingDirective],
-      providers: [
-        provideMockStore({ initialState }),
-        PushPipe
-      ],
+      imports: [RouterTestingModule],
+      declarations: [AppComponent, LazyElementTestingDirective, MockPipe],
+      providers: [provideMockStore({ initialState }), { provide: TokenService, useClass: MockTokenService }],
     }).compileComponents();
 
     router = TestBed.inject(Router);
-    httpTestingController = TestBed.inject(HttpTestingController);
+    mockTokenService = TestBed.inject(TokenService);
   }));
 
   beforeEach(() => {
@@ -86,31 +96,21 @@ describe('AppComponent', () => {
     component.clearName();
   });
 
-  it('getToken makes api call to get token', () => {
+  it('getToken makes api call to TokenService', () => {
+    spyOn(mockTokenService, 'getToken');
     component.getToken();
-
-    const req = httpTestingController.expectOne(
-      'http://local.spectrum-poc.net:4299/token'
-    );
-
-    req.flush({ token: 'testing' });
-    expect(component.display).toEqual({ token: 'testing' });
+    expect(mockTokenService.getToken).toHaveBeenCalledTimes(1);
   });
 
   it('getApi makes api call to get token', () => {
+    spyOn(mockTokenService, 'getApi');
     component.getApi();
-
-    const req = httpTestingController.expectOne(
-      'http://local.spectrum-poc.net:4299/api'
-    );
-
-    req.flush({ api: 'testing' });
-    expect(component.display).toEqual({ api: 'testing' });
+    expect(mockTokenService.getApi).toHaveBeenCalledTimes(1);
   });
 
-  it('clearDisplay clears display prop', () => {
-    component.display = { api: 'testing' };
+  it('clearResult clears display prop', () => {
+    spyOn(mockTokenService, 'clearResult');
     component.clearResult();
-    expect(component.display).toEqual('');
+    expect(mockTokenService.clearResult).toHaveBeenCalledTimes(1);
   });
 });
