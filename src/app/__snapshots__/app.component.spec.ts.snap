@@ -6,15 +6,19 @@ exports[`AppComponent should create the app 1`] = `
   count={[Function Number]}
   counter$={[Function Observable]}
   destroySubs$={[Function Subject]}
-  http={[Function HttpClient]}
+  display$="undefined"
   msg={[Function EventEmitter]}
   outlet={[Function RouterOutlet]}
   router={[Function Router]}
+  showInternalAlert="false"
   store={[Function MockStore]}
   storeNameState$={[Function Store]}
   toggleState$={[Function Store]}
+  tokenService={[Function MockTokenService]}
 >
-  <div
+  <app-homepage-alert
+    class="homepage-alert-overlay"
+  /><div
     class="homepage-app"
   >
     <h4>
@@ -53,6 +57,21 @@ exports[`AppComponent should create the app 1`] = `
     </p>
     <mfe-homepage-widget />
     
+    <button
+      class="alert-button"
+    >
+      Show Alert
+    </button>
+    <button
+      class="panel-button"
+    >
+      Show Internal Alert
+    </button>
+    <button
+      class="panel-button"
+    >
+      Show Panel
+    </button>
     <hr />
     <button>
       Get Token
