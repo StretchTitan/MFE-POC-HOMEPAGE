@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppComponent should create the app 1`] = `
+<app-root
+  __ngContext__={[Function LRootView]}
+  count={[Function Number]}
+  counter$={[Function Observable]}
+  destroySubs$={[Function Subject]}
+  display$="undefined"
+  msg={[Function EventEmitter]}
+  outlet={[Function RouterOutlet]}
+  router={[Function Router]}
+  showInternalAlert="false"
+  store={[Function MockStore]}
+  storeNameState$={[Function Store]}
+  toggleState$={[Function Store]}
+  tokenService={[Function MockTokenService]}
+>
+  <app-homepage-alert
+    class="homepage-alert-overlay"
+  /><div
+    class="homepage-app"
+  >
+    <h4>
+      This is the 
+      <span
+        style="color: darkgreen;"
+      >
+        MFE-POC-HOMEPAGE
+      </span>
+       app
+    </h4>
+    <p>
+      Welcome to the home page!
+    </p>
+    
+    <p>
+      Store Name:  
+    </p>
+    
+    <button>
+      Clear Name
+    </button>
+    
+    
+    <mfe-widget />
+    
+    <mfe-card />
+    
+    <button>
+      Flip Toggle
+    </button>
+    <p
+      style="font-weight: bold; color: red;"
+    >
+      Toggle: OFF
+    </p>
+    <mfe-homepage-widget />
+    
+    <button
+      class="alert-button"
+    >
+      Show Alert
+    </button>
+    <button
+      class="panel-button"
+    >
+      Show Internal Alert
+    </button>
+    <button
+      class="panel-button"
+    >
+      Show Panel
+    </button>
+    <hr />
+    <button>
+      Get Token
+    </button>
+    <button>
+      Make API Call
+    </button>
+    
+    
+  </div><div
+    class="nav"
+  >
+    <a
+      class="nav--link"
+      href="/home/equipment"
+      routerlink="/home/equipment"
+    >
+      Equipment
+    </a>
+    <a
+      class="nav--link"
+      href="/home/channels"
+      routerlink="/home/channels"
+    >
+      Channels
+    </a>
+  </div><router-outlet />
+</app-root>
+`;

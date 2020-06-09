@@ -1,0 +1,46 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.nav {
+    height: 40px;
+    width: 100%;
+    background: lightslategray;
+    display: flex;
+    justify-content: center;
+
+    &--link {
+        height: 100%;
+        display: flex;
+        padding: 0 20px;
+        margin: 0 10px;
+        color: white;
+        align-items: center;
+        text-decoration: none;
+    }
+}
+
+.homepage-app {
+    padding: 18px;
+    margin: 4px;
+    border: 2px dashed darkgreen;
+    width: 100%;
+}
+
+.homepage-alert-overlay {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+
+    &.visible {
+        display: flex;
+    }
+}
